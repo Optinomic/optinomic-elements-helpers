@@ -87,22 +87,26 @@
                         "app": {}
                     };
                     if ((this.appId !== null) && (this.appId !== undefined)) {
-                        if ((state.apps.all.patient_modules !== null) && (state.apps.all.patient_modules !== undefined)) {
-                            var appId = this.appId;
-                            state.apps.all.patient_modules.forEach(function(pm, appID) {
-                                if (pm.identifier === appId) {
-                                    return_obj = return_obj = {
-                                        "found": true,
-                                        "app": pm
-                                    };
+                        if ((state.apps !== null) && (state.apps !== undefined)) {
+                            if ((state.apps.all !== null) && (state.apps.all !== undefined)) {
+                                if ((state.apps.all.patient_modules !== null) && (state.apps.all.patient_modules !== undefined)) {
+                                    var appId = this.appId;
+                                    state.apps.all.patient_modules.forEach(function(pm, appID) {
+                                        if (pm.identifier === appId) {
+                                            return_obj = return_obj = {
+                                                "found": true,
+                                                "app": pm
+                                            };
+                                        };
+                                    });
                                 };
-                            });
+                            };
                         };
                     };
                     return return_obj;
                 },
                 observer: '_buildPDF'
-            },
+            }
             pdfContent: {
                 type: Object,
                 reflectToAttribute: true,
